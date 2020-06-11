@@ -15,7 +15,7 @@ var oabeApi = class extends ExtensionCommon.ExtensionAPI {
     })
 
     const getAttachmentsInActiveMail = () => {
-      const { currentAttachment, currentAttachments } = Services.wm.getMostRecentWindow("mail:3pane")
+      const { currentAttachment, currentAttachments } = Services.wm.getMostRecentWindow(null)
       return currentAttachment || currentAttachments
     }
 
@@ -39,7 +39,7 @@ var oabeApi = class extends ExtensionCommon.ExtensionAPI {
         // test:
         // await browser.oabeApi.openAttachmentFromActiveMail({name:"TB_1.dxf"})
         async openAttachmentFromActiveMail(filters, options) {
-          const { messenger, setTimeout } = Services.wm.getMostRecentWindow("mail:3pane")
+          const { messenger, setTimeout } = Services.wm.getMostRecentWindow(null)
           const sleepAsync = (milli) => {
             return new Promise(resolve => {
               setTimeout(() => resolve(), milli)
@@ -112,7 +112,7 @@ var oabeApi = class extends ExtensionCommon.ExtensionAPI {
         async pickFile() {
           const nsIFilePicker = Components.interfaces.nsIFilePicker;
           const fp = newFilePicker()
-          const { window } = Services.wm.getMostRecentWindow("mail:3pane")
+          const { window } = Services.wm.getMostRecentWindow(null)
           fp.init(window, "OpenAttachmentByExtension", nsIFilePicker.modeOpen)
           fp.appendFilters(nsIFilePicker.filterAll)
           const asyncOpen = new Promise((resolve, reject) => {
@@ -133,7 +133,7 @@ var oabeApi = class extends ExtensionCommon.ExtensionAPI {
         async pickDir() {
           const nsIFilePicker = Components.interfaces.nsIFilePicker;
           const fp = newFilePicker()
-          const { window } = Services.wm.getMostRecentWindow("mail:3pane")
+          const { window } = Services.wm.getMostRecentWindow(null)
           fp.init(window, "OpenAttachmentByExtension", nsIFilePicker.modeGetFolder)
           fp.appendFilters(nsIFilePicker.filterAll)
           const asyncOpen = new Promise((resolve, reject) => {
