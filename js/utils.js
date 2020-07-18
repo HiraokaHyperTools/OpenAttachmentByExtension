@@ -31,7 +31,13 @@ export function buildLauncherSetFromFromFileName(fileName) {
 
   let parameters = []
 
-  let command = pref2.getExtensionCommand(extension || '@@@')
+  let command = undefined
+  if (fileName === "winmail.dat") {
+    command = pref2.getExtensionCommand('winmaildat')
+  }
+  if (!command) {
+    command = pref2.getExtensionCommand(extension || '@@@')
+  }
   if (!command) {
     if (!isNaN(extension)) {
       command = pref2.getExtensionCommand('###')
@@ -49,4 +55,14 @@ export function buildLauncherSetFromFromFileName(fileName) {
     program: parts[0],
     parameters: parameters.concat(parts.slice(1)),
   }
+}
+
+export function strcmp(a, b) {
+  if (a < b) {
+    return -1;
+  }
+  else if (a > b) {
+    return 1;
+  }
+  return 0;
 }

@@ -41,6 +41,9 @@ $('#page-extensions').on('pagebeforeshow', () => {
         /^extension\.(.+)$/,
         key => pref.get(key)
       )
+        .sort(
+          (a, b) => utils.strcmp(a[0], b[0])
+        )
         .map(
           array => {
             const [key, extension, command] = array

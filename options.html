@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
 
-  <title>Options</title>
+  <title>OpenAttach: Options</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="jquery.mobile-1.4.5.css" />
   <style type="text/css">
@@ -14,8 +14,8 @@
 <body>
   <div data-role="page" id="page-top">
 
-    <div data-role="header">
-      <h1>Options</h1>
+    <div data-role="header" data-position="fixed">
+      <h1>OpenAttach: Options</h1>
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
@@ -29,14 +29,11 @@
       <p><a href="#page-extensions" class="ui-btn ui-shadow ui-corner-all">Command to run with extensions</a></p>
     </div><!-- /content -->
 
-    <div data-role="footer">
-      <h4>Page Footer</h4>
-    </div><!-- /footer -->
   </div><!-- /page -->
 
   <div data-role="page" id="page-workdir">
 
-    <div data-role="header">
+    <div data-role="header" data-position="fixed">
       <h1>Temporary directory to open attachments</h1>
       <a href="#page-top" data-icon="back" class="ui-btn-left">Back</a>
       <a href="#" data-icon="check" class="ui-btn-right" id="saveWorkDirBtn">Save</a>
@@ -54,14 +51,11 @@
       <button class="ui-btn ui-btn-inline" id="refWorkDirBtn">Browse...</button>
     </div><!-- /content -->
 
-    <div data-role="footer">
-      <h4>Page Footer</h4>
-    </div><!-- /footer -->
   </div><!-- /page two -->
 
   <div data-role="page" id="page-extensions">
 
-    <div data-role="header">
+    <div data-role="header" data-position="fixed">
       <h1>Command to run with extensions</h1>
       <a href="#page-top" data-icon="back" class="ui-btn-left">Back</a>
       <a href="#page-extension-detail" data-icon="plus" class="ui-btn-inline" id="gotoAddNewExtensionBtn">Add</a>
@@ -75,14 +69,11 @@
       </ul>
     </div><!-- /content -->
 
-    <div data-role="footer">
-      <h4>Page Footer</h4>
-    </div><!-- /footer -->
   </div><!-- /page popup -->
 
   <div data-role="page" id="page-extension-detail">
 
-    <div data-role="header">
+    <div data-role="header" data-position="fixed">
       <h1>Command to run with extension detail</h1>
       <a href="#page-extensions" data-icon="back" class="ui-btn-left">Back</a>
       <a href="#page-extensions" data-icon="check" class="ui-btn-right" id="saveExtensionDetailBtn">Save</a>
@@ -119,9 +110,6 @@
 
     </div><!-- /content -->
 
-    <div data-role="footer">
-      <h4>Page Footer</h4>
-    </div><!-- /footer -->
   </div><!-- /page two -->
 
   <script src="scripts/jquery-3.5.1.js"></script>
