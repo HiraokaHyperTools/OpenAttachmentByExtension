@@ -12,7 +12,7 @@ if (fs.existsSync(xpi)) {
 }
 
 child_process.execSync(
-  `7z a "${xpi}" *.* -x!*.pxf -x!.gitignore -r`,
+  `7z a "${xpi}" * -x!*.pxf -x!.gitignore -r`,
   {
     cwd: path.resolve(process.cwd(), "src"),
   }
