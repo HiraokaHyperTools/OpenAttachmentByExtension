@@ -1,6 +1,7 @@
+const os = require('node:os');
+const child_process = require('node:child_process');
 const process = require('node:process');
 const path = require('node:path');
-const child_process = require('node:child_process');
 
 function run(cwd, command, ifStatusIsAllowed) {
   console.log(`--- ${path.resolve(process.cwd(), cwd)}> ${command} `);
@@ -22,12 +23,12 @@ function run(cwd, command, ifStatusIsAllowed) {
   }
 }
 
-run("apps/j", "yarn");
-run("apps/j", "yarn tsc");
-run("apps/launcher", "npm ci");
-run("apps/launcher", "yarn build");
-run("apps/launcher", "yarn cp");
-run("apps/options", "npm ci");
-run("apps/options", "yarn build");
-run("apps/options", "yarn cp");
-run(".", "node pack");
+const source = process.argv[2];
+const dest = process.argv[3];
+
+if (os.type() === "Windows_NT") {
+  run(".", `robocopy /mir "${source}" "${dest}"`, status => (status & 8) === 0);
+}
+else {
+  run(".", `rsync -avh "${source}" "${dest}" --delete`);
+}

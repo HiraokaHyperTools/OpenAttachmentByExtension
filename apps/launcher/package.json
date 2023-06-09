@@ -23,7 +23,7 @@
     "build": "cross-env PUBLIC_URL=/webroot/launcher  react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cp": "robocopy /mir build ..\\..\\src\\webroot\\launcher"
+    "cp": "node ../../robocopy build ../../src/webroot/launcher"
   },
   "eslintConfig": {
     "extends": [

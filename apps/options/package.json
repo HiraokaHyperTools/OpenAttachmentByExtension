@@ -28,7 +28,7 @@
     "build": "cross-env PUBLIC_URL=/webroot/options  react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cp": "robocopy /mir build ..\\..\\src\\webroot\\options"
+    "cp": "node ../../robocopy build ../../src/webroot/options"
   },
   "eslintConfig": {
     "extends": [
