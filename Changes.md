@@ -1,3 +1,9 @@
+## Changes in 0.10.1
+
+Others:
+
+- Activate GitHub Actions for auto building.
+
 ## Changes in 0.10.0
 
 - Using modern React and MUI instead of legacy jQuery and jQuery Mobile
