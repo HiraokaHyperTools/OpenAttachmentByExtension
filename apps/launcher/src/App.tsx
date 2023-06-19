@@ -64,7 +64,7 @@ function App() {
               ? <li>No attachment observed in active message.</li>
               : attachments.map(
                 attachment => <li key={attachment.name}>
-                  <a href="#" onClick={_ => openAttachment(attachment.name)}>{attachment.name}</a>
+                  <a href="https://example.com" onClick={_ => openAttachment(attachment.name)}>{attachment.name}</a>
                 </li>
               )
             : <li>Loading...</li>
