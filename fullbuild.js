@@ -17,6 +17,12 @@ function run(cwd, command, ifStatusIsAllowed) {
       // ok
     }
     else {
+      if (ex.stdout) {
+        console.warn("stdout", new TextDecoder().decode(ex.stdout));
+      }
+      if (ex.stderr) {
+        console.warn("stderr", new TextDecoder().decode(ex.stderr));
+      }
       throw ex;
     }
   }
