@@ -23,9 +23,6 @@ import * as utils from 'j/lib/utils';
 import {
   createHashRouter,
   RouterProvider,
-  Link,
-  Route,
-  Routes,
   useParams,
   useNavigate,
 } from "react-router-dom";
