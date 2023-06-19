@@ -30,5 +30,5 @@ if (os.type() === "Windows_NT") {
   run(".", `robocopy /mir "${source}" "${dest}"`, status => (status & 8) === 0);
 }
 else {
-  run(".", `rsync -avh "${source}" "${dest}" --delete`);
+  run(".", `rsync -avh "${source}/" "${dest}" --delete`);
 }
