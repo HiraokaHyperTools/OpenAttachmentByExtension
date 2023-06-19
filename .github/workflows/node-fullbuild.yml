@@ -25,3 +25,14 @@ jobs:
     - name: Build
       run: |
         node fullbuild.js
+
+    - name: "GitHub Release"
+      uses: "marvinpinto/action-automatic-releases@latest"
+      continue-on-error: true
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "fullbuild-${{github.run_number}}"
+        prerelease: true
+        title: "fullbuild ${{github.run_number}}"
+        files: |
+          OpenAttachmentByExtension.xpi
