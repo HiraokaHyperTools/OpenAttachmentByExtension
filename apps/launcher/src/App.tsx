@@ -24,7 +24,7 @@ declare const browser: {
   }
 }
 
-function openAttachment(name: string): boolean {
+function openAttachment(name: string): void {
   const launcherSet = utils.buildLauncherSetFromFromFileName(name)
   browser.oabeApi.openAttachmentFromActiveMail(
     {
@@ -36,7 +36,6 @@ function openAttachment(name: string): boolean {
       parameters: launcherSet.parameters,
     }
   )
-  return false // won't open about:blank
 }
 
 function App() {
@@ -64,7 +63,7 @@ function App() {
               ? <li>No attachment observed in active message.</li>
               : attachments.map(
                 attachment => <li key={attachment.name}>
-                  <a href="https://example.com" onClick={_ => openAttachment(attachment.name)}>{attachment.name}</a>
+                  <a href="/" onClick={e => { openAttachment(attachment.name); e.preventDefault(); }}>{attachment.name}</a>
                 </li>
               )
             : <li>Loading...</li>
