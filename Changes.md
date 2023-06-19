@@ -1,3 +1,9 @@
+## Changes in 0.10.2
+
+Others:
+
+- Fixed version of manifest.json not modified.
+
 ## Changes in 0.10.1
 
 Others:
