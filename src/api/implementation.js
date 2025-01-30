@@ -25,14 +25,8 @@ var oabeApi = class extends ExtensionCommon.ExtensionAPI {
           && Services.wm.getMostRecentWindow("mail:3pane").gTabmail.currentAboutMessage.currentAttachments
           ;
       }
-      function forThunderbird102AndBelow() {
-        return true
-          && Services.wm.getMostRecentWindow(null)
-          && Services.wm.getMostRecentWindow(null).currentAttachments
-          ;
-      }
 
-      return forThunderbird115AndAbove() || forThunderbird102AndBelow() || [];
+      return forThunderbird115AndAbove() || [];
     }
 
     const buildLaunchSet = (programAsString, attachmentFile, parameterArray) => {
@@ -117,19 +111,12 @@ var oabeApi = class extends ExtensionCommon.ExtensionAPI {
         },
 
         // test:
-        // await browser.oabeApi.listAttachmentFromActiveMail()
-        async listAttachmentFromActiveMail() {
-          return getAttachmentsInActiveMail()
-            .map(it => reduceAttachmentInfo(it))
-        },
-
-        // test:
         // await browser.oabeApi.pickFile()
         async pickFile() {
           const nsIFilePicker = Components.interfaces.nsIFilePicker;
           const fp = newFilePicker()
           const { window } = Services.wm.getMostRecentWindow(null)
-          fp.init(window, "OpenAttachmentByExtension", nsIFilePicker.modeOpen)
+          fp.init(window.browsingContext, "OpenAttachmentByExtension", nsIFilePicker.modeOpen)
           fp.appendFilters(nsIFilePicker.filterAll)
           const asyncOpen = new Promise((resolve, reject) => {
             fp.open(function (rv) {
@@ -150,7 +137,7 @@ var oabeApi = class extends ExtensionCommon.ExtensionAPI {
           const nsIFilePicker = Components.interfaces.nsIFilePicker;
           const fp = newFilePicker()
           const { window } = Services.wm.getMostRecentWindow(null)
-          fp.init(window, "OpenAttachmentByExtension", nsIFilePicker.modeGetFolder)
+          fp.init(window.browsingContext, "OpenAttachmentByExtension", nsIFilePicker.modeGetFolder)
           fp.appendFilters(nsIFilePicker.filterAll)
           const asyncOpen = new Promise((resolve, reject) => {
             fp.open(function (rv) {
