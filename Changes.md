@@ -1,3 +1,7 @@
+## Changes in 0.10.5
+
+- Moving support version of Thunderbird to 128.*
+
 ## Changes in 0.10.4
 
 Others:

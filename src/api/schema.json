@@ -52,13 +52,6 @@
         ]
       },
       {
-        "name": "listAttachmentFromActiveMail",
-        "type": "function",
-        "description": "Enumerate attachment(s) from current active message.",
-        "async": true,
-        "parameters": []
-      },
-      {
         "name": "pickFile",
         "type": "function",
         "description": "Pick up a file from local filesystem.",
