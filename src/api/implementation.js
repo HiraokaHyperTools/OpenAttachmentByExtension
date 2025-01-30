@@ -1,7 +1,9 @@
 var oabeApi = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
     const { FileUtils } = ChromeUtils.import("resource://gre/modules/FileUtils.jsm")
-    const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm")
+    const Services = globalThis.Services || ChromeUtils.import(
+      "resource://gre/modules/Services.jsm"
+    ).Services
     const newProcess = () => Components.classes["@mozilla.org/process/util;1"]
       .createInstance(Components.interfaces.nsIProcess)
     const newFilePicker = () => Components.classes["@mozilla.org/filepicker;1"]
