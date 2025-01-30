@@ -7,9 +7,18 @@ interface Attachment {
   name: string
 }
 
+type MessageId = number;
+
+interface DisplayedMessageReduced {
+  id: MessageId
+}
+
+interface MessageAttachmentReduced {
+  name: string
+}
+
 declare const browser: {
   oabeApi: {
-    listAttachmentFromActiveMail(): Promise<Attachment[]>;
     openAttachmentFromActiveMail(
       filter: {
         name?: string,
@@ -21,7 +30,13 @@ declare const browser: {
         parameters?: string[],
       }
     ): Promise<void>;
-  }
+  },
+  messageDisplay: {
+    getDisplayedMessages(): Promise<DisplayedMessageReduced[]>;
+  },
+  messages: {
+    listAttachments(messageId: MessageId): Promise<MessageAttachmentReduced[]>;
+  },
 }
 
 function openAttachment(name: string): void {
@@ -38,6 +53,18 @@ function openAttachment(name: string): void {
   )
 }
 
+async function listAttachmentFromActiveMailAlt(): Promise<Attachment[]> {
+  const displayedMessages = await browser.messageDisplay.getDisplayedMessages();
+  if (1 <= displayedMessages.length) {
+    const { id } = displayedMessages[0];
+    const attachments = await browser.messages.listAttachments(id);
+    return attachments.map(it => ({ name: it.name }));
+  }
+  else {
+    return [];
+  }
+}
+
 function App() {
   const [attachments, setAttachments] = useState([] as Attachment[]);
   const [ready, setReady] = useState(false);
@@ -46,7 +73,7 @@ function App() {
     () => {
       (
         async () => {
-          setAttachments(await browser.oabeApi.listAttachmentFromActiveMail());
+          setAttachments(await listAttachmentFromActiveMailAlt());
           setReady(true);
         }
       )()
